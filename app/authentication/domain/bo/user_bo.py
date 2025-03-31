@@ -7,4 +7,3 @@ class UserBO(BaseModel):
     username: str
     password: str
     mail: str
-    year_of_birth: int

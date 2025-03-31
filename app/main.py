@@ -6,21 +6,21 @@ from app.files.api.router import router as files_router
 from app.config import DATABASE_URL, models
 
 description = """
-# Práctica 4
+# Activity 4
 """
 
 metadata = [
     {
         "name": "Authentication",
-        "description": "Description of Authentication"
+        "description": "Authentication description"
     },
     {
         "name": "Files",
-        "description": "Description of Files"
+        "description": "Files description"
     }
 ]
 
-app = FastAPI(title='Activity04', description=description, tags_metadata=metadata)
+app = FastAPI(title='Activity4', description=description, tags_metadata=metadata)
 app.include_router(authentication_router, prefix='/auth', tags=['Authentication'])
 app.include_router(files_router, prefix='/files', tags=['Files'])
 register_tortoise(

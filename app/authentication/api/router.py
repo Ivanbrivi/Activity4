@@ -14,18 +14,16 @@ class RegisterInput(BaseModel):
     username: str
     password: str
     mail: str
-    year_of_birth: int
 
 class RegisterOutput(BaseModel):
     username: str
     mail: str
-    year_of_birth: int
 
 
 @router.post("/register")
 async def auth_register(register_input: RegisterInput = Body()) -> dict[str, RegisterOutput]:
     if register_input.username == '' or register_input.password == '':
-        raise HTTPException(status_code=400, detail='Username and password can not be empty')
+        raise HTTPException(status_code=400, detail='Username and password can´t be blank')
 
     register_controller = RegisterControllers.carlemany()
 
@@ -34,7 +32,6 @@ async def auth_register(register_input: RegisterInput = Body()) -> dict[str, Reg
             username=register_input.username,
             password=register_input.password,
             mail=register_input.mail,
-            year_of_birth=register_input.year_of_birth
         )
 
     except UsernameAlreadyTakenException:
@@ -43,7 +40,6 @@ async def auth_register(register_input: RegisterInput = Body()) -> dict[str, Reg
     output = RegisterOutput(
         username=user.username,
         mail=user.mail,
-        year_of_birth=user.year_of_birth
     )
 
     return {"new_user": output}
@@ -57,7 +53,7 @@ class LoginInput(BaseModel):
 @router.post("/login")
 async def auth_login(login_input: LoginInput = Body()) -> dict[str, str]:
     if login_input.username == '' or login_input.password == '':
-        raise HTTPException(status_code=400, detail='Username and password can not be empty')
+        raise HTTPException(status_code=400, detail='Username and password can´t be blank')
 
     login_controller = LoginControllers.carlemany()
 
@@ -68,7 +64,7 @@ async def auth_login(login_input: LoginInput = Body()) -> dict[str, str]:
         raise HTTPException(status_code=404, detail='Username not found')
 
     except WrongPasswordException:
-        raise HTTPException(status_code=403, detail='Password is not correct')
+        raise HTTPException(status_code=403, detail='Incorrect Password')
 
     return {'auth': token}
 
@@ -77,7 +73,6 @@ class IntrospectOutput(BaseModel):
     id: int
     username: str
     mail: str
-    year_of_birth: int
 
 
 @router.get("/introspect")
@@ -92,7 +87,6 @@ async def auth_introspect(auth: str = Header()) -> IntrospectOutput:
         id=user.id,
         username=user.username,
         mail=user.mail,
-        year_of_birth=user.year_of_birth
     )
 
 

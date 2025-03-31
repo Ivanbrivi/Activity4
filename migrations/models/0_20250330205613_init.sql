@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS "userdb" (
     "username" VARCHAR(75) NOT NULL,
     "password" VARCHAR(75) NOT NULL,
     "mail" VARCHAR(75) NOT NULL,
-    "year_of_birth" INT
 );
 CREATE TABLE IF NOT EXISTS "filedb" (
     "id" SERIAL NOT NULL PRIMARY KEY,

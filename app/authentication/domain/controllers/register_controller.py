@@ -17,7 +17,6 @@ class RegisterController:
             username=username,
             password=hashed_password,
             mail=mail,
-            year_of_birth=year_of_birth
         )
 
         try:

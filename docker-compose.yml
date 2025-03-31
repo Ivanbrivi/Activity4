@@ -30,7 +30,7 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
     ports:
-      - "6379:6379"
+      - "6380:6380"
     networks:
       - carlemany-net
 
@@ -52,7 +52,7 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "5432:5432"
+      - "5433:5433"
     networks:
       - carlemany-net
 

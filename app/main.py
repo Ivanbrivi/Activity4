@@ -6,13 +6,7 @@ from app.files.api.router import router as files_router
 from app.config import DATABASE_URL, models
 
 description = """
-# Universidad Carlemany
-
-## Báchelor de Informática
-
-### Cloud Computing Services
-
-#### Profesor: Ramón Amela
+# Práctica 4
 """
 
 metadata = [

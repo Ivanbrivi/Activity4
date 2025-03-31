@@ -10,13 +10,11 @@ from app.authentication.domain.persistences.exceptions import UsernameAlreadyTak
 
 router = APIRouter()
 
-
 class RegisterInput(BaseModel):
     username: str
     password: str
     mail: str
     year_of_birth: int
-
 
 class RegisterOutput(BaseModel):
     username: str
